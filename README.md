@@ -1,9 +1,7 @@
-# Starter React Project for the Supabase Course
+# 리엑트 프로젝트 + 수파베이스 연동
 
-**How to run the starter project:**
+간단한 Todo 프로그램 연습
 
-1. Once downloaded, navigate to the project directory in a terminal and run **npm install** to install all the project dependencies.
-2. In the project directory, run **npm start** to run the app & view it in a browser at [http://localhost:3000](http://localhost:3000).
+# 배포방법
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+npm run deploy
