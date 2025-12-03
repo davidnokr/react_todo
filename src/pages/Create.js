@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import supabase from '../config/supabaseClient'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
+  const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [method, setMethod] = useState('')
   const [rating, setRating] = useState('')
@@ -19,6 +21,7 @@ const Create = () => {
       .from('todos')
       .insert([{ title, method, rating }])
       .select()
+      .order('id', { ascending: false })
 
     if (error) {
       console.log(error)
@@ -26,9 +29,8 @@ const Create = () => {
     }
 
     if (data) {
-      console.log('success!')
-      console.log(data)
       setFormError(null)
+      navigate('/')
     }
   }
 
@@ -53,14 +55,14 @@ const Create = () => {
         />
 
         {/* Rating */}
-        <label htmlFor="rating">Rating:</label>
+        <label htmlFor="rating">Rating(1-9):</label>
         <input
           type="number"
           id="rating"
           value={rating}
           onChange={(e) => setRating(e.target.value)}
           min="1"
-          max="5"
+          max="9"
         />
 
         <button>Create Smoothie Recipe</button>
